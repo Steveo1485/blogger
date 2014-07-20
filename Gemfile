@@ -23,4 +23,6 @@ group :development, :test do
   gem 'debugger'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_girl'
+  gem 'faker'
 end
