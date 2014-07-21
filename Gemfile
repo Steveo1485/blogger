@@ -23,7 +23,7 @@ group :development, :test do
   gem 'debugger'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
 end
 
