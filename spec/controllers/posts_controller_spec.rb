@@ -16,4 +16,11 @@ describe PostsController do
     end
   end
 
+  context "GET #show" do
+    it "should render the show template" do
+      get :show, id: post_one.id
+      response.should render_template :show
+    end
+  end
+
 end
