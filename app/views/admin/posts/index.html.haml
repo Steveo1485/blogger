@@ -1,0 +1,14 @@
+%h1 All Posts
+
+%table
+  %tr
+    %th Title
+    %th Preview
+    %th Created On
+    %th
+  - for post in @posts
+    %tr
+      %td= post.title.titleize
+      %td= post.content
+      %td= post.created_at
+      %td View Details
