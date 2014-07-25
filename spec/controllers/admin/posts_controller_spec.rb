@@ -6,7 +6,7 @@ describe Admin::PostsController do
   let!(:post_build) {FactoryGirl.build(:post)}
 
   context "GET #index" do
-    it "should render the manage/index template" do
+    it "should render the admin/posts/index template" do
       get :index
       response.should render_template :index
     end
@@ -18,7 +18,7 @@ describe Admin::PostsController do
   end
 
   context "GET #new" do
-    it "should render the manage/new template" do
+    it "should render the admin/posts/new template" do
       get :new
       response.should render_template :new
     end
@@ -31,6 +31,18 @@ describe Admin::PostsController do
 
     it "should not create a post with invalid params" do
       expect{ post :create, post: {title: "Title"} }.to_not change{Post.count}
+    end
+  end
+
+  context "GET #show" do
+    it "should render the admin/posts/show template" do
+      get :show, id: post_one.id
+      response.should render_template :show
+    end
+
+    it "should assign the correct post" do
+      get :show, id: post_one.id
+      assigns(:post).id.should eq(post_one.id)
     end
   end
 end
