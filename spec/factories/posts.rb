@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :post do
-    title "Welcome!"
-    content { Faker::Lorem.paragraph }
+    title {Faker::Lorem.word.capitalize}
+    content {Faker::Lorem.paragraph}
   end
 end
