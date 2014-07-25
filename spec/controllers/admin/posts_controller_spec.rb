@@ -45,4 +45,29 @@ describe Admin::PostsController do
       assigns(:post).id.should eq(post_one.id)
     end
   end
+
+  context "GET #edit" do
+    it "should render the admin/posts/edit template" do
+      get :edit, id: post_one.id
+      response.should render_template :edit
+    end
+
+    it "should assign the correct post" do
+      get :edit, id: post_one.id
+      assigns(:post).id.should eq(post_one.id)
+    end
+  end
+
+  context "PUT #update" do
+    it "should update a post with valid params" do
+      put :update, id: post_one.id, post: { title: "Updated Title" }
+      expect(post_one.reload.title).to eq("Updated Title")
+    end
+
+    it "should not update a post with invalid params" do
+      put :update, id: post_one.id, post: { title: " " }
+      expect(post_one.reload.title).to_not eq(" ")
+      expect(post_one.reload.title).to eq(post_one.title)
+    end
+  end
 end
