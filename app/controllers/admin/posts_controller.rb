@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
 
-  before_filter :fetch_post, only: [:show, :edit, :update]
+  before_filter :fetch_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -31,6 +31,12 @@ class Admin::PostsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @post.destroy
+    redirect_to admin_posts_path
+  end
+
 
   private
 

@@ -90,4 +90,15 @@ describe Admin::PostsController do
       response.should render_template :edit
     end
   end
+
+  context "DELETE #destroy" do
+    it "should destroy a post" do
+      expect{ delete :destroy, id: post_one.id }.to change{Post.count}.by(-1)
+    end
+
+    it "should redirect to admin_posts_path after destroy" do
+      delete :destroy, id: post_one.id
+      response.should redirect_to admin_posts_path
+    end
+  end
 end
