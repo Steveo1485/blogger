@@ -29,8 +29,18 @@ describe Admin::PostsController do
       expect{ post :create, post: post_build.attributes }.to change{Post.count}.by(1)
     end
 
+    it "should redict to admin_post_path for successfully created post" do
+      post :create, post: post_build.attributes
+      response.should redirect_to admin_post_path(Post.last)
+    end
+
     it "should not create a post with invalid params" do
       expect{ post :create, post: {title: "Title"} }.to_not change{Post.count}
+    end
+
+    it "should render the new template if create unsuccessful" do
+      post :create, post: {title: "Title"}
+      response.should render_template :new
     end
   end
 
@@ -64,10 +74,20 @@ describe Admin::PostsController do
       expect(post_one.reload.title).to eq("Updated Title")
     end
 
+    it "should redict to admin_post_path for successfully updated post" do
+      put :update, id: post_one.id, post: { title: "Updated Title" }
+      response.should redirect_to admin_post_path(post_one.id)
+    end
+
     it "should not update a post with invalid params" do
       put :update, id: post_one.id, post: { title: " " }
       expect(post_one.reload.title).to_not eq(" ")
       expect(post_one.reload.title).to eq(post_one.title)
+    end
+
+    it "should render the edit template if update unsuccessful" do
+      put :update, id: post_one.id, post: { title: " " }
+      response.should render_template :edit
     end
   end
 end
