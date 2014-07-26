@@ -5,6 +5,6 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
-  %body{class: "#{params[:controller]}-#{params[:action]}"}
+  %body{class: "manage #{params[:controller].split("/").last}-#{params[:action]}"}
     .container-fluid
       = yield

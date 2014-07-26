@@ -2,6 +2,8 @@ class Admin::PostsController < ApplicationController
 
   before_filter :fetch_post, only: [:show, :edit, :update, :destroy]
 
+  layout 'admin/admin'
+
   def index
     @posts = Post.all
   end
