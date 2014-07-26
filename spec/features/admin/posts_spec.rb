@@ -13,5 +13,9 @@ describe "Admin Posts" do
       page.should have_content post_one.title
       page.should have_content post_two.title
     end
+
+    it "should display link to add new post" do
+      page.should have_link "Create Post"
+    end
   end
 end
