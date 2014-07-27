@@ -1,0 +1,16 @@
+= render 'errors'
+
+= form_for [:admin, @post], html: {class: "form-horizontal"} do |f|
+  .form-group
+    = f.label :title, "Post Title", class: "col-sm-2 form-label"
+    .col-sm-10
+      = f.text_field :title, placeholder: "Post Title...", class: "form-control"
+
+  .form-group
+    = f.label :content, "Post Content", class: "col-sm-2 form-label"
+    .col-sm-10
+      = f.text_area :content, placeholder: "Post Content...", rows: "10", class: "form-control"
+
+  .form-group
+    .col-sm-10.col-sm-offset-2
+      = f.submit "#{@post.new_record? ? 'Save Post' : 'Update Post'}", class: "btn btn-default", id: "new-post-btn"
