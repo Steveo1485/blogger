@@ -27,7 +27,21 @@ body.admin.posts-index {
 }
 
 body.admin.posts-show {
-  h1 {
+  .post-content {
+    padding: 3rem;
+    padding-bottom: 1rem;
+  }
+
+  hr {
+    border-color: #E4F1FE;
+    width: 75%;
+  }
+
+  .manage {
     text-align: center;
+    margin-bottom: 3rem;
+    .btn {
+      margin: 0rem 1rem;
+    }
   }
 }

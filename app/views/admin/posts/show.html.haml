@@ -1,6 +1,10 @@
-%h1== Post: #{@post.title}
+%h1.title== Post: #{@post.title}
 
-= simple_format(@post.content)
+.post-content
+  = simple_format(@post.content)
 
-= link_to "Edit Post", edit_admin_post_path(@post), class: "btn btn-default"
-= link_to "Delete Post", admin_post_path(@post), method: :delete, "data-confirm" => "Are you sure you want to delete this post? This action cannot be undone.", class: "btn btn-danger"
+%hr
+.manage
+  %h4.title Manage Post
+  = link_to "Edit Post", edit_admin_post_path(@post), class: "btn btn-default"
+  = link_to "Delete Post", admin_post_path(@post), method: :delete, "data-confirm" => "Are you sure you want to delete this post? This action cannot be undone.", class: "btn btn-danger"
