@@ -102,4 +102,23 @@ describe "Admin Posts" do
       page.should have_content "Title can't be blank."
     end
   end
+
+  context "Deleting a post" do
+    before :each do
+      within ".post-#{post_one.id}" do
+        click_link "View Details"
+      end
+    end
+
+    it "should display 'Delete Post' link" do
+      page.should have_link "Delete Post"
+    end
+
+    it "should allow post to be destroyed" do
+      click_link "Delete Post"
+      current_path.should eq(admin_posts_path)
+      page.should_not have_content post_one.title
+      page.should_not have_content post_one.content
+    end
+  end
 end
