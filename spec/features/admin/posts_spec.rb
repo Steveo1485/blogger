@@ -54,4 +54,52 @@ describe "Admin Posts" do
       end
     end
   end
+
+  context "Viewing post" do
+    before :each do
+      within ".post-#{post_one.id}" do
+        click_link "View Details"
+      end
+    end
+
+    it "should be on the admin_post_path" do
+      current_path.should eq(admin_post_path(post_one.id))
+    end
+
+    it "should display post details" do
+      page.should have_content post_one.title
+      page.should have_content post_one.content
+    end
+
+    it "should display Edit Post link" do
+      page.should have_link "Edit Post"
+    end
+  end
+
+  context "Editing post" do
+    before :each do
+      within ".post-#{post_one.id}" do
+        click_link "View Details"
+      end
+      click_link "Edit Post"
+    end
+
+    it "should beon the edit_admin_post_path" do
+      current_path.should eq(edit_admin_post_path(post_one.id))
+    end
+
+    it "should allow user to edit post" do
+      fill_in "post_title", with: "Updated Title"
+      click_button "Update Post"
+      current_path.should eq(admin_post_path(post_one.id))
+      page.should have_content "Updated Title"
+    end
+
+    it "should display errors if update unsuccessful" do
+      fill_in "post_title", with: " "
+      click_button "Update Post"
+      page.should have_content "Oops! Something went wrong..."
+      page.should have_content "Title can't be blank."
+    end
+  end
 end

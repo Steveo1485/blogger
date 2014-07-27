@@ -9,8 +9,8 @@
     %th Created On
     %th
   - for post in @posts
-    %tr
+    %tr{class: "post-#{post.id}"}
       %td= post.title.titleize
       %td= post.content
       %td= post.created_at
-      %td View Details
+      %td= link_to "View Details", admin_post_path(post)
