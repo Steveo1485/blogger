@@ -3,6 +3,27 @@ body.admin.posts-index {
     float: right;
     margin-bottom: 1rem;
   }
+
+  table.posts {
+    th.title {
+      width: 15%;
+    }
+    th.preview {
+      width: auto;
+    }
+    th.date {
+      width: 10%;
+    }
+    th.details {
+      width: 10%;
+    }
+  }
+
+  .table-striped>tbody>tr:nth-child(odd)>td,
+  .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #E4F1FE;
+    border-color: #6BB9F0;
+  }
 }
 
 body.admin.posts-show {

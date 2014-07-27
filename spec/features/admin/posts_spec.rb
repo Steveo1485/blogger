@@ -118,7 +118,6 @@ describe "Admin Posts" do
       click_link "Delete Post"
       current_path.should eq(admin_posts_path)
       page.should_not have_content post_one.title
-      page.should_not have_content post_one.content
     end
   end
 end
