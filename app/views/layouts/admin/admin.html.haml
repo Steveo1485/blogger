@@ -7,5 +7,7 @@
     = csrf_meta_tags
 
   %body{class: "admin #{params[:controller].split("/").last}-#{params[:action]}"}
+    = render 'layouts/admin/navigation'
+
     .container-fluid
       = yield
