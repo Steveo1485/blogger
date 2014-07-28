@@ -79,6 +79,11 @@ describe "Admin Posts" do
     it "should display Edit Post link" do
       page.should have_link "Edit Post"
     end
+
+    it "back button should take back to Posts index" do
+      click_link "Back"
+      current_path.should eq(admin_posts_path)
+    end
   end
 
   context "Editing post" do
