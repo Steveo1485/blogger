@@ -38,6 +38,11 @@ describe "Admin Posts" do
       page.should have_content post_build.content
     end
 
+    it "Cancel button should take back to index" do
+      click_link "Cancel"
+      current_path.should eq(admin_posts_path)
+    end
+
     context "when post creation wasn't successful" do
       before :each do
         fill_in "post_title", with: post_build.title
@@ -100,6 +105,11 @@ describe "Admin Posts" do
       click_button "Update Post"
       page.should have_content "Oops! Something went wrong..."
       page.should have_content "Title can't be blank."
+    end
+
+    it "Cancel button should take back to post's show view" do
+      click_link "Cancel"
+      current_path.should eq(admin_post_path(post_one.id))
     end
   end
 
