@@ -12,6 +12,11 @@
       = f.text_area :content, placeholder: "Post Content...", rows: "10", class: "form-control"
 
   .form-group
+    = f.label :active, "Post Active?", class: "col-sm-2 form-label"
+    .col-sm-10
+      = f.check_box :active
+
+  .form-group
     .col-sm-10.col-sm-offset-2
       = link_to "Cancel", path, class: "btn btn-danger"
       = f.submit "#{@post.new_record? ? 'Save Post' : 'Update Post'}", class: "btn btn-default", id: "new-post-btn"
