@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PostsController do
   let!(:post_one) {FactoryGirl.create(:post)}
-  let!(:post_two) {FactoryGirl.create(:post)}
+  let!(:post_two) {FactoryGirl.create(:post, active: false)}
 
   context "GET #index" do
     it "should render the index template" do
@@ -10,9 +10,9 @@ describe PostsController do
       response.should render_template :index
     end
 
-    it "should assign all posts" do
+    it "should assign all active posts" do
       get :index
-      assigns(:posts).pluck(:id).should eq([post_one.id, post_two.id])
+      assigns(:posts).pluck(:id).should eq([post_one.id])
     end
   end
 
