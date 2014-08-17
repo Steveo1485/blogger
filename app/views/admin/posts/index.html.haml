@@ -1,0 +1,16 @@
+%h1.title All Posts
+
+=link_to "Create Post", new_admin_post_path, class: "btn btn-default", id: "new-post"
+
+%table.table.table-striped.posts
+  %tr
+    %th.title Title
+    %th.preview Preview
+    %th.date Created On
+    %th.details
+  - for post in @posts
+    %tr{class: "post-#{post.id}"}
+      %td= post.title.titleize
+      %td= simple_format(truncate(post.content, length: 700))
+      %td= post.created_at.strftime("%b %e, %Y")
+      %td= link_to "View Details", admin_post_path(post), class: "btn btn-sm btn-default"

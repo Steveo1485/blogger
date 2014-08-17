@@ -1,0 +1,58 @@
+body.admin.posts-index {
+  a#new-post {
+    float: right;
+    margin-bottom: 1rem;
+  }
+
+  table.posts {
+    th.title {
+      width: 15%;
+    }
+    th.preview {
+      width: auto;
+    }
+    th.date {
+      width: 10%;
+    }
+    th.details {
+      width: 10%;
+    }
+  }
+
+  .table-striped>tbody>tr:nth-child(odd)>td,
+  .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #E4F1FE;
+    border-color: #6BB9F0;
+  }
+}
+
+body.admin.posts-show {
+  .post-content {
+    padding: 3rem;
+    padding-bottom: 1rem;
+  }
+
+  hr {
+    border-color: #E4F1FE;
+    width: 75%;
+  }
+
+  .manage {
+    text-align: center;
+    margin-bottom: 3rem;
+    .btn {
+      margin: 0rem 1rem;
+    }
+  }
+}
+
+body.admin.posts-new, body.admin.posts-edit {
+  form {
+    margin: 5rem 15rem;
+  }
+  label {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #3498DB;
+  }
+}

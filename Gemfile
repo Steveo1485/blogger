@@ -11,6 +11,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'haml'
+gem 'haml-rails'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 
 group :development do
@@ -23,6 +27,11 @@ group :development, :test do
   gem 'debugger'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
+  gem 'poltergeist'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
 end
