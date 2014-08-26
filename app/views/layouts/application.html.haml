@@ -7,5 +7,7 @@
     = csrf_meta_tags
 
   %body{class: "#{params[:controller]}-#{params[:action]}"}
+    = render 'layouts/navigation'
+
     .container-fluid
       = yield
