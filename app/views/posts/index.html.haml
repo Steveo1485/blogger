@@ -1,4 +1,2 @@
 - for post in @posts
-  %h1= post.title
-  = post.content
-  = link_to "Read More", post_path(post.id), class: "btn btn-default"
+  = render "post", post: post
