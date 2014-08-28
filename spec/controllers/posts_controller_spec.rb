@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe PostsController do
-  let!(:post_one) {FactoryGirl.create(:post)}
+  let!(:post_one) {FactoryGirl.create(:post, activated_at: DateTime.now)}
   let!(:post_two) {FactoryGirl.create(:post, active: false)}
+  let!(:post_three) {FactoryGirl.create(:post, activated_at: DateTime.now - 1.hour)}
 
   context "GET #index" do
     it "should render the index template" do
@@ -10,9 +11,9 @@ describe PostsController do
       response.should render_template :index
     end
 
-    it "should assign all active posts" do
+    it "should assign all active posts sorted by activated_at" do
       get :index
-      assigns(:posts).pluck(:id).should eq([post_one.id])
+      assigns(:posts).pluck(:id).should eq([post_three.id, post_one.id])
     end
   end
 
