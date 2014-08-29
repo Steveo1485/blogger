@@ -14,6 +14,7 @@ class Admin::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.activated_at = DateTime.now if post_params[:active] == true
     if @post.save
       redirect_to admin_post_path(@post)
     else

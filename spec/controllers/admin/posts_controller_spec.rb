@@ -42,6 +42,17 @@ describe Admin::PostsController do
       post :create, post: {title: "Title"}
       response.should render_template :new
     end
+
+    it "should set activated_at if active is true" do
+      post :create, post: post_build.attributes
+      expect(Post.last.activated_at).to_not be_nil
+    end
+
+    it "should not set activated_at if active is false" do
+      not_active = FactoryGirl.build(:post, active: false)
+      post :create, post: not_active.attributes
+      expect(Post.last.activated_at).to be_nil
+    end
   end
 
   context "GET #show" do
