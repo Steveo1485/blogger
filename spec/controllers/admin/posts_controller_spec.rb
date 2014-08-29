@@ -100,6 +100,23 @@ describe Admin::PostsController do
       put :update, id: post_one.id, post: { title: " " }
       response.should render_template :edit
     end
+
+    it "should set activated_at if Post was previously inactive and is now active" do
+      inactive = FactoryGirl.create(:post, active: false)
+      put :update, id: inactive.id, post: { active: true }
+      expect(inactive.reload.activated_at).to_not be_nil
+    end
+
+    it "should not updated activated_at if Post activated_at was previously set" do
+      activated = post_one.activated_at
+      put :update, id: post_one.id, post: { title: "Updated Title" }
+      expect(post_one.reload.activated_at.to_s).to eq(activated.to_s)
+    end
+
+    it "should set activated_at to nil if Post is made inactive" do
+      put :update, id: post_one.id, post: { active: false }
+      expect(post_one.reload.activated_at).to be_nil
+    end
   end
 
   context "DELETE #destroy" do
