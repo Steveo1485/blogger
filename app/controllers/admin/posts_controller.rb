@@ -5,7 +5,7 @@ class Admin::PostsController < ApplicationController
   layout 'admin/admin'
 
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
   end
 
   def new

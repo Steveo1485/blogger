@@ -11,9 +11,9 @@ describe Admin::PostsController do
       response.should render_template :index
     end
 
-    it "should assign all posts" do
+    it "should assign all posts ordered by created_at desc" do
       get :index
-      assigns(:posts).pluck(:id).should eq([post_one.id, post_two.id])
+      assigns(:posts).pluck(:id).should eq(Post.order(created_at: :desc).pluck(:id))
     end
   end
 
