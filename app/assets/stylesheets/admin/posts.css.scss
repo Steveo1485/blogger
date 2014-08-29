@@ -30,6 +30,18 @@ body.admin.posts-show {
   .post-content {
     padding: 3rem;
     padding-bottom: 1rem;
+
+    .post-details {
+      font-weight: bolder;
+    }
+
+    .active {
+      color: green;
+    }
+
+    .inactive {
+      color: red;
+    }
   }
 
   hr {

@@ -11,9 +11,9 @@ describe Admin::PostsController do
       response.should render_template :index
     end
 
-    it "should assign all posts" do
+    it "should assign all posts ordered by created_at desc" do
       get :index
-      assigns(:posts).pluck(:id).should eq([post_one.id, post_two.id])
+      assigns(:posts).pluck(:id).should eq(Post.order(created_at: :desc).pluck(:id))
     end
   end
 
@@ -41,6 +41,17 @@ describe Admin::PostsController do
     it "should render the new template if create unsuccessful" do
       post :create, post: {title: "Title"}
       response.should render_template :new
+    end
+
+    it "should set activated_at if active is true" do
+      post :create, post: post_build.attributes
+      expect(Post.last.activated_at).to_not be_nil
+    end
+
+    it "should not set activated_at if active is false" do
+      not_active = FactoryGirl.build(:post, active: false)
+      post :create, post: not_active.attributes
+      expect(Post.last.activated_at).to be_nil
     end
   end
 
@@ -88,6 +99,23 @@ describe Admin::PostsController do
     it "should render the edit template if update unsuccessful" do
       put :update, id: post_one.id, post: { title: " " }
       response.should render_template :edit
+    end
+
+    it "should set activated_at if Post was previously inactive and is now active" do
+      inactive = FactoryGirl.create(:post, active: false)
+      put :update, id: inactive.id, post: { active: true }
+      expect(inactive.reload.activated_at).to_not be_nil
+    end
+
+    it "should not updated activated_at if Post activated_at was previously set" do
+      activated = post_one.activated_at
+      put :update, id: post_one.id, post: { title: "Updated Title" }
+      expect(post_one.reload.activated_at.to_s).to eq(activated.to_s)
+    end
+
+    it "should set activated_at to nil if Post is made inactive" do
+      put :update, id: post_one.id, post: { active: false }
+      expect(post_one.reload.activated_at).to be_nil
     end
   end
 

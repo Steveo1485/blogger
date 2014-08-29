@@ -1,6 +1,8 @@
 %h1.title== Post: #{@post.title}
 
 .post-content
+  %h5.post-details{class: "#{@post.active ? 'active' : 'inactive'}"}
+    = @post.active ? "Posted On: #{@post.activated_at.strftime("%B %e, %Y")}" : "Not Yet Posted"
   = simple_format(@post.content)
 
 %hr
