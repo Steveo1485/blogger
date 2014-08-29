@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Admin Posts" do
   let!(:post_one) {FactoryGirl.create(:post)}
-  let!(:post_two) {FactoryGirl.create(:post)}
+  let!(:post_two) {FactoryGirl.create(:post, active: false)}
   let!(:post_build) {FactoryGirl.create(:post)}
 
   before :each do
@@ -17,6 +17,15 @@ describe "Admin Posts" do
 
     it "should display link to add new post" do
       page.should have_link "Create Post"
+    end
+
+    it "should display when Post was posted if applicable" do
+      within "#post-#{post_one.id}" do
+        page.should have_content post_one.activated_at.strftime("%b %e, %Y")
+      end
+      within "#post-#{post_two.id}" do
+        page.should have_content "Not Posted Yet"
+      end
     end
   end
 
@@ -62,7 +71,7 @@ describe "Admin Posts" do
 
   context "Viewing post" do
     before :each do
-      within ".post-#{post_one.id}" do
+      within "#post-#{post_one.id}" do
         click_link "View Details"
       end
     end
@@ -88,7 +97,7 @@ describe "Admin Posts" do
 
   context "Editing post" do
     before :each do
-      within ".post-#{post_one.id}" do
+      within "#post-#{post_one.id}" do
         click_link "View Details"
       end
       click_link "Edit Post"
@@ -120,7 +129,7 @@ describe "Admin Posts" do
 
   context "Deleting a post" do
     before :each do
-      within ".post-#{post_one.id}" do
+      within "#post-#{post_one.id}" do
         click_link "View Details"
       end
     end
