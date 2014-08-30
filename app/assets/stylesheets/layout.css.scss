@@ -1,6 +1,11 @@
 .container-fluid {
   margin-top: 4rem;
 
+  h1.title, h2.title, h3.title, h4.title, h5.title, h6.title {
+    text-align: center;
+    color: #3498DB;
+  }
+
   .post-content {
     padding: 0rem 2rem;
   }
