@@ -15,11 +15,20 @@
       width: 100%;
       display: block;
     }
-
   }
 
   .home-link {
     margin-top: 1rem;
     display: block;
+  }
+
+  #error-explanation {
+    text-align: center;
+    color: red;
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
   }
 }

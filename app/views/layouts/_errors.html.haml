@@ -1,0 +1,6 @@
+- if defined?(object) and object.errors.any?
+  #error-explanation
+    %h4 Oops! Something went wrong...
+    %ul
+      - object.errors.full_messages.each do |error_msg|
+        %li== #{error_msg}.
