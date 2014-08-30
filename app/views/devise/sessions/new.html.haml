@@ -1,0 +1,24 @@
+.container-fluid
+  %h2.title Log In
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f|
+
+    .form-group
+      = f.label :email, class: "col-sm-4 control-label"
+      .col-sm-offset4.col-sm-4
+        = f.email_field :email, autofocus: true, class: "form-control"
+
+    .form-group
+      = f.label :password, class: "col-sm-4 control-label"
+      .col-sm-offset4.col-sm-4
+        = f.password_field :password, autocomplete: "off", class: "form-control"
+
+    - if devise_mapping.rememberable?
+      .form-group
+        = f.label :remember_me, class: "col-sm-4 control-label"
+        .col-sm-offset4.col-sm-4
+          = f.check_box :remember_me
+
+    .form-group
+      .col-sm-offset-4.col-sm-8
+        = f.submit "Log In", class: "btn btn-default"
