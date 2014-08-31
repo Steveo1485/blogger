@@ -6,6 +6,17 @@
     color: #3498DB;
   }
 
+  .form-group.required-field .control-label:after {
+    content: "*";
+    color: red;
+  }
+
+  .required-fields {
+    color: red;
+    text-align: center;
+    font-style: italic;
+  }
+
   .post-content {
     padding: 0rem 2rem;
   }
