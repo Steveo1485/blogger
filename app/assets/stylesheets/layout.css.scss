@@ -43,6 +43,22 @@
     }
   }
 
+  .alert {
+    padding: 1rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    text-align: center;
+    width: 80%;
+  }
+
+  .alert-success {
+    background-color: #3FC380;
+  }
+
+  .alert-error {
+    background-color: #E74C3C;
+  }
+
   label {
     font-size: 1.5rem;
     font-weight: 500;
