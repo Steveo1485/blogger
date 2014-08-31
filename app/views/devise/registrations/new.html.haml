@@ -1,0 +1,41 @@
+.container-fluid
+  %h2.title Sign Up
+
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal"}) do |f|
+    = render 'layouts/errors', object: resource
+
+    .form-group.required-field
+      = f.label :first_name, class: "col-sm-4 control-label"
+      .col-sm-offset4.col-sm-4
+        = f.text_field :first_name, placeholder: "First name", class: "form-control"
+
+    .form-group.required-field
+      = f.label :last_name, class: "col-sm-4 control-label"
+      .col-sm-offset4.col-sm-4
+        = f.text_field :last_name, placeholder: "Last name", class: "form-control"
+
+    .form-group.required-field
+      = f.label :username, class: "col-sm-4 control-label"
+      .col-sm-offset4.col-sm-4
+        = f.text_field :username, placeholder: "Username", class: "form-control"
+
+    .form-group.required-field
+      = f.label :email, class: "col-sm-4 control-label"
+      .col-sm-offset4.col-sm-4
+        = f.email_field :email, placeholder: "Email", class: "form-control"
+
+    .form-group.required-field
+      = f.label :password, class: "col-sm-4 control-label"
+      .col-sm-offset4.col-sm-4
+        = f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control"
+
+    .form-group.required-field
+      = f.label :password_confirmation, "Confirm password", class: "col-sm-4 control-label"
+      .col-sm-offset4.col-sm-4
+        = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm password", class: "form-control"
+
+    .form-group
+      .col-sm-offset-4.col-sm-8
+        = f.submit "Sign up", class: "btn btn-default"
+
+  %h5.required-fields * Indicates required field

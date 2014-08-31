@@ -1,6 +1,22 @@
 .container-fluid {
   margin-top: 4rem;
 
+  h1.title, h2.title, h3.title, h4.title, h5.title, h6.title {
+    text-align: center;
+    color: #3498DB;
+  }
+
+  .form-group.required-field .control-label:after {
+    content: "*";
+    color: red;
+  }
+
+  .required-fields {
+    color: red;
+    text-align: center;
+    font-style: italic;
+  }
+
   .post-content {
     padding: 0rem 2rem;
   }
@@ -10,11 +26,46 @@
       width: 100%;
       display: block;
     }
-
   }
 
   .home-link {
     margin-top: 1rem;
     display: block;
+  }
+
+  #error-explanation {
+    text-align: center;
+    color: red;
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+  }
+
+  .alert {
+    padding: 0.5rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    text-align: center;
+    width: 80%;
+
+    a.close {
+      font-size: 1.5rem !important;
+    }
+  }
+
+  .alert-success {
+    background-color: #3FC380;
+  }
+
+  .alert-error {
+    background-color: #E74C3C;
+  }
+
+  label {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #3498DB;
   }
 }

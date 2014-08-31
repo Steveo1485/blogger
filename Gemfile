@@ -15,6 +15,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'devise'
 
 
 group :development do
