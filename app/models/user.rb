@@ -10,4 +10,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true, email: true
   validates :password, presence: true
   validates :password_confirmation, presence: true
+
+  after_create :add_user_role
+
+  private
+
+  def add_user_role
+    self.add_role(:user).errors
+  end
 end
