@@ -4,5 +4,5 @@ class Role < ActiveRecord::Base
   
   scopify
 
-  validates :name, inclusion: { in: [:user, :admin]}
+  validates :name, inclusion: { in: ["user", "admin"]}
 end
