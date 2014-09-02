@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
 
   after_create :add_user_role
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def primary_role
+    has_role?(:admin) ? :admin : :user
+  end
+
   private
 
   def add_user_role
