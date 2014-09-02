@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :username]
   end
+
+  def after_sign_in_path_for(resource)
+    current_user.has_role?(:admin) ? admin_path : root_path
+  end
 end

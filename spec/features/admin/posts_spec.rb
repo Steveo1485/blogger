@@ -1,12 +1,17 @@
 require 'spec_helper'
 
 describe "Admin Posts" do
+  let!(:user) {FactoryGirl.create(:user)}
   let!(:post_one) {FactoryGirl.create(:post)}
   let!(:post_two) {FactoryGirl.create(:post, active: false)}
   let!(:post_build) {FactoryGirl.create(:post)}
 
   before :each do
-    visit admin_posts_path
+    user.add_role(:admin)
+    visit new_user_session_path
+    fill_in "user_email", with: user.email
+    fill_in "user_password", with: user.password
+    click_button "Log In"
   end
 
   context "Index" do

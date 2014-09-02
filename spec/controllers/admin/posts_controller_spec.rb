@@ -1,9 +1,15 @@
 require 'spec_helper'
 
 describe Admin::PostsController do
+  let!(:user) {FactoryGirl.create(:user)}
   let!(:post_one) {FactoryGirl.create(:post)}
   let!(:post_two) {FactoryGirl.create(:post)}
   let!(:post_build) {FactoryGirl.build(:post)}
+
+  before :each do
+    user.add_role(:admin)
+    sign_in user
+  end
 
   context "GET #index" do
     it "should render the admin/posts/index template" do

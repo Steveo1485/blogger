@@ -66,4 +66,7 @@ RSpec.configure do |config|
 
   #Remove warning from Capybara
   config.expose_current_running_example_as :example
+
+  # Configure for devise
+  config.include Devise::TestHelpers, :type => :controller
 end

@@ -52,7 +52,13 @@ describe "User" do
       current_path.should eq(root_path)
     end
 
-    xit "should reidrect to Admin Panel when signing in as an admin" do
+    it "should reidrect to Admin Panel when signing in as an admin" do
+      @user.add_role(:admin)
+      fill_in "user_email", with: @user.email
+      fill_in "user_password", with: @user.password
+      click_button "Log In"
+      page.should have_content "Signed in successfully."
+      current_path.should eq(admin_path)
     end
   end
 
