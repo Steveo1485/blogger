@@ -8,6 +8,8 @@ describe "Admin Posts" do
 
   before :each do
     sign_in_admin(user)
+    click_link "Posts"
+    click_link "All Posts"
   end
 
   context "Index" do
