@@ -1,0 +1,18 @@
+%h1.title Users
+
+%table.table.table-striped.users
+  %tr
+    %th ID
+    %th Username
+    %th Name
+    %th Primary Role
+    %th Email
+    %th
+  - for user in @users
+    %tr{id: "user-#{user.id}"}
+      %td= user.id
+      %td= user.username
+      %td= user.name
+      %td= user.primary_role
+      %td= user.email
+      %td
