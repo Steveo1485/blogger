@@ -7,11 +7,7 @@ describe "Admin Posts" do
   let!(:post_build) {FactoryGirl.create(:post)}
 
   before :each do
-    user.add_role(:admin)
-    visit new_user_session_path
-    fill_in "user_email", with: user.email
-    fill_in "user_password", with: user.password
-    click_button "Log In"
+    sign_in_admin(user)
   end
 
   context "Index" do
