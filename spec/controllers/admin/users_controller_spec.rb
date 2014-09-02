@@ -21,4 +21,25 @@ describe Admin::UsersController do
     end
   end
 
+  context "GET #edit" do
+    it "should render the edit template" do
+      get :edit, id: user.id
+      response.should render_template :edit
+    end
+  end
+
+  context "PUT #update" do
+    it "should update the user with valid attributes" do
+      put :update, id: user.id, user: { first_name: "Updated" }
+      expect(user.reload.first_name).to eq("Updated")
+      response.should redirect_to admin_users_path
+    end
+
+    it "should not update user with invalid attributes" do
+      put :update, id: user.id, user: { first_name: " " }
+      expect(user.reload.first_name).to eq(user.first_name)
+      response.should render_template :edit
+    end
+  end
+
 end
