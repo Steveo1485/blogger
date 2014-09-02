@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
 
+    resources :users, only: [:index]
+
     get "/", to: "posts#index"
   end
 
