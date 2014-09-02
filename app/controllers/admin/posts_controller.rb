@@ -1,8 +1,6 @@
-class Admin::PostsController < ApplicationController
+class Admin::PostsController < Admin::IndexController
 
   before_filter :fetch_post, only: [:show, :edit, :update, :destroy]
-
-  layout 'admin/admin'
 
   def index
     @posts = Post.order(created_at: :desc)
