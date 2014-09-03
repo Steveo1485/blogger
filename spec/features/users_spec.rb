@@ -19,6 +19,16 @@ describe "User" do
       page.should have_content "Password confirmation can't be blank."
     end
 
+    it "should display errors when duplicate email and username are used" do
+      existing_user = FactoryGirl.create(:user)
+      fill_in "user_username", with: existing_user.username
+      fill_in "user_email", with: existing_user.email
+      click_button "Sign up"
+      page.should have_content "Oops! Something went wrong..."
+      page.should have_content "Username has already been taken."
+      page.should have_content "Email has already been taken."
+    end
+
     it "should redirect to root path after successful submission" do
       fill_in "user_first_name", with: @user.first_name
       fill_in "user_last_name", with: @user.last_name
