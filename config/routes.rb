@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
 
+    resources :users, except: [:show, :new]
+
     get "/", to: "posts#index"
   end
 
