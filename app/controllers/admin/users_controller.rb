@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::IndexController
 
-  before_action :fetch_user, only: [:edit, :update]
+  before_action :fetch_user, except: [:index]
 
   def index
     @users = User.order(created_at: :desc)
@@ -15,6 +15,11 @@ class Admin::UsersController < Admin::IndexController
     else
       render :edit, notice: "User not updated. Please try again."
     end
+  end
+
+  def destroy
+    @user.destroy ? msg = "User deleted successfully!" : msg = "User not deleted. Please try again."
+    redirect_to admin_users_path, notice: msg
   end
 
   private

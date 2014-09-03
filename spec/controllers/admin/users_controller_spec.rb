@@ -42,4 +42,10 @@ describe Admin::UsersController do
     end
   end
 
+  context "DELETE #destroy" do
+    it "should destroy a user" do
+      expect{ delete :destroy, id: user.id }.to change{User.count}.by(-1)
+    end
+  end
+
 end

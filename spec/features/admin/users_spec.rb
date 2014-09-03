@@ -53,4 +53,19 @@ describe 'Managing Users' do
       page.should have_content "First name can't be blank."
     end
   end
+
+  context "Destroy" do
+    before :each do
+      within "#user-#{user_two.id}" do
+        click_link "Manage User"
+        click_link "Delete User"
+      end
+    end
+
+    it "should delete user" do
+      current_path.should eq(admin_users_path)
+      page.should have_content "User deleted successfully!"
+      page.should_not have_content user_two.name
+    end
+  end
 end
