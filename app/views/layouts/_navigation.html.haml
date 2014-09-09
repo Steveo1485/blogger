@@ -1,3 +1,9 @@
-%nav
-  .btn-group
-    = link_to "Home", root_path
+%nav.navbar.navbar-default
+  .navbar-header
+    / %button.navbar-toggle.collapsed{"data-toggle" => "collapse", "data-target" => "#main-navbar-collapse"}
+    /   %span{class: "icon-bar"}
+    /   %span{class: "icon-bar"}
+    /   %span{class: "icon-bar"}
+    = link_to "Home", root_path, class: "navbar-brand"
+  / .collapse.navbar-collapse{id: "main-navbar-collapse"}
+  /   %ul.nav.navbar-nav
