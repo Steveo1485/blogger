@@ -3,12 +3,12 @@
 
   .form-group.required-field
     = f.label :title, "Post Title", class: "col-sm-2 control-label"
-    .col-sm-10
+    .col-sm-offset2.col-sm-8
       = f.text_field :title, placeholder: "Post Title...", class: "form-control"
 
   .form-group.required-field
     = f.label :content, "Post Content", class: "col-sm-2 control-label"
-    .col-sm-10
+    .col-sm-offset2.col-sm-8
       = f.text_area :content, placeholder: "Post Content...", rows: "10", class: "form-control"
 
   .form-group
