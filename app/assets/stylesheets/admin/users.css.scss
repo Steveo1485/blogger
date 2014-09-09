@@ -1,0 +1,7 @@
+body.admin.users-index {
+  @media only screen and (max-width : 767px) {
+  	.email, .id, .name {
+  		display: none;
+  	}
+  }
+}

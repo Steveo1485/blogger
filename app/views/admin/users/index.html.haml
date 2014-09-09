@@ -2,20 +2,20 @@
 
 %table.table.table-striped.users
   %tr
-    %th ID
-    %th Username
-    %th Name
-    %th Primary Role
-    %th Email
-    %th
+    %th.id ID
+    %th.username Username
+    %th.name Name
+    %th.role Primary Role
+    %th.email Email
+    %th.details
   - for user in @users
     %tr{id: "user-#{user.id}"}
-      %td= user.id
-      %td= user.username
-      %td= user.name
-      %td= user.primary_role
-      %td= user.email
-      %td
+      %td.id= user.id
+      %td.username= user.username
+      %td.name= user.name
+      %td.role= user.primary_role
+      %td.email= user.email
+      %td.details
         .btn-group
           =link_to raw("Manage User <span class='caret'></span>"), "#", class: "btn btn-sm btn-default dropdown-toggle", "data-toggle" => "dropdown"
           %ul.dropdown-menu
