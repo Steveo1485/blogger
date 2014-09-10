@@ -17,6 +17,12 @@ body.admin.posts-index {
     th.details {
       width: 10%;
     }
+
+    @media only screen and (max-width : 700px) {
+      .date {
+        display: none;
+      }
+    }
   }
 
   .table-striped>tbody>tr:nth-child(odd)>td,
@@ -59,7 +65,5 @@ body.admin.posts-show {
 }
 
 body.admin.posts-new, body.admin.posts-edit {
-  form {
-    margin: 5rem 15rem;
-  }
+
 }

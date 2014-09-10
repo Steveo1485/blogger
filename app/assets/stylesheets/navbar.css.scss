@@ -1,24 +1,36 @@
 nav {
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  background-color: rgba(52, 152, 219, 0.95);
-  font-size: 2rem;
-  padding: 0.75rem;
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  border: none !important;
+  border-radius: 0px !important;
+  background-color: rgba(52, 152, 219, 0.95) !important;
+  font-size: 2rem !important;
+
+  .navbar-brand {
+    font-size: 2rem !important;
+  }
   a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 2rem;
+    color: #ffffff !important;
   }
   a:hover {
-    color: #DADFE1;
+    color: #DADFE1 !important;
+  }
+  .dropdown.open {
+    .dropdown-toggle {
+      background: none !important;
+    }
   }
   ul.dropdown-menu {
-    font-size: 1.5rem;
-    a {
-      margin: 0.5rem;
-      color: #3498DB;
+    background-color: rgb(37, 116, 169) !important;
+    font-size: 1.5rem !important;
+    border: 0px !important;
+    a:hover {
+      background: none !important;
     }
+  }
+  button.navbar-toggle {
+    background-color: white !important;
   }
 }
